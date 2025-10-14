@@ -283,35 +283,18 @@
       text-align: center;
     }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center;
-    padding: 8px 15px;
-    gap: 10px;
-  }
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 12px 20px;
+        gap: 12px;
+      }
 
-  .navbar .logo {
-    font-size: 1rem; 
-  }
+      .navbar ul { flex-direction: column; gap: 12px; width: 100%; }
+      .navbar ul li a { text-align: center; }
+      .navbar .buy-btn { width: 100%; text-align: center; padding: 12px 0; }
 
-  .navbar ul {
-    flex-direction: row; 
-    gap: 12px;          
-  }
-
-  .navbar ul li a {
-    font-size: 13px;    
-  }
-
-  .navbar .buy-btn {
-    padding: 6px 12px;   
-    font-size: 13px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,255,136,0.1);
-  }
-}
+      .hero img { width: 100%; max-width: 100%; height: auto; }
       .hero p { font-size: 14px; padding: 0 10px; }
       .hero .btn { width: 90%; padding: 12px 0; font-size: 15px; }
 
@@ -429,4 +412,3 @@
   </script>
 </body>
 </html>
-
