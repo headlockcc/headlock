@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>headlock.cc</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020403;
+      --panel: #080a09;
+      --accent: #00ff88;
+      --accent2: #00cc6a;
+      --text: #e9fbee;
+      --muted: #94a59d;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: linear-gradient(180deg, #000 0%, #040806 100%);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      padding-top: 80px; 
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cinzel', serif;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      z-index: 999;
+      border-bottom: 1px solid rgba(0,255,136,0.15);
+    }
+
+    .navbar .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(0,255,136,0.4);
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .navbar ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .navbar .buy-btn {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #001c0f;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,255,136,0.15);
+    }
+
+    .navbar .buy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,136,0.25);
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 800px;
+      margin: 40px auto 60px auto;
+    }
+
+    .hero img {
+      width: 500px;
+      max-width: 800px;
+      height: auto;
+      border-radius: 16px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .hero .btn {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      color: #001c0f;
+      font-weight: 700;
+      margin-top: 28px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);
+    }
+
+    .hero .btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 30px rgba(0, 255, 136, 0.25);
+    }
+
+    .showcase {
+      text-align: center;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+
+    .showcase h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .showcase-media {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .showcase-media img,
+    .showcase-media video {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+      cursor: pointer;
+    }
+
+    .showcase-media img:hover,
+    .showcase-media video:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 30px rgba(0, 255, 136, 0.2);
+    }
+
+    .features-section {
+      text-align: center;
+      margin: 100px auto 60px;
+      max-width: 1100px;
+    }
+
+    .features-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.02));
+      border: 1px solid rgba(0, 255, 136, 0.15);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: left;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.05);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 0 35px rgba(0, 255, 136, 0.15);
+      background: linear-gradient(180deg, rgba(0, 255, 136, 0.08), rgba(0, 255, 136, 0.03));
+    }
+
+    .feature-card h3 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p, .feature-card li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .feature-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature-card ul li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .discord-section {
+      text-align: center;
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      margin: 80px auto;
+      box-shadow: 0 0 40px rgba(0, 255, 136, 0.04);
+    }
+
+    .discord-section h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .discord-section p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .discord-btn {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      color: #001c0f;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .discord-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 30px rgba(0, 255, 136, 0.25);
+    }
+
+    footer {
+      margin-top: 80px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">headlock.cc</div>
+    <ul>
+      <li><a href="#showcase">Showcase</a></li>
+      <li><a href="#discord">Discord</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <img src="/headlock.gif" alt="headlock animation" />
+    <p>The next-generation system monitoring and security platform.<br>
+    Performance, automation, and protection — all in one place.</p>
+    <button class="btn" id="notifyBtn">EARLY ACCESS</button>
+  </section>
+
+  <section id="showcase" class="showcase">
+    <h2>SHOWCASE</h2>
+    <div class="showcase-media">
+      <img src="/showcase.png" alt="Dashboard Preview">
+      <video controls class="showcase-video">
+        <source src="/media.mp4" type="video/mp4">
+      </video>
+      <img src="/showcase1.png" alt="Analytics Snapshot">
+    </div>
+  </section>
+
+  <section class="features-section">
+    <h2 class="features-title">FEATURES</h2>
+    <div class="features-grid">
+      <div class="feature-card"><h3>🎯 aimbot</h3><p>High-precision aim assist for perfect accuracy.</p></div>
+      <div class="feature-card"><h3>🧩 esp</h3><ul><li>Skeleton</li><li>Box</li><li>Health</li><li>Name</li><li>Team Check</li></ul></div>
+      <div class="feature-card"><h3>👁️ visuals</h3><ul><li>Aim Crosshair</li><li>Bomb Timer</li></ul></div>
+      <div class="feature-card"><h3>⚙️ trigger bot</h3><p>Fires automatically when your aim hits the target.</p></div>
+      <div class="feature-card"><h3>🛠️ misc</h3><p>OBS Bypass + Config Hotkeys.</p></div>
+      <div class="feature-card"><h3>💻 os support</h3><p>Windows 10/11 64-bit • Intel & AMD.</p></div>
+      <div class="feature-card"><h3>🔒 security</h3><p>100% VAC Safe.</p></div>
+    </div>
+  </section>
+
+  <section class="discord-section" id="discord">
+    <h3>join the community</h3>
+    <p>Be part of the headlock.cc community on Discord and get early access before launch!</p>
+    <a href="https://discord.gg/zJ7syhyECC" target="_blank" class="discord-btn">Join Discord</a>
+  </section>
+
+<footer>
+  <div style="max-width: 1000px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 14px; color: var(--accent); text-align: center;">
+        <div style="color: var(--text); font-size: 14px; margin-bottom: 10px;">
+      Got questions? Reach out to us!
+    </div>
+<a href="mailto:headlockcc@proton.me" style="color: var(--accent); text-decoration: none;">Email</a> | 
+<a href="https://discord.gg/zJ7syhyECC" target="_blank" style="color: var(--accent); text-decoration: none;">Discord</a> | 
+<a href="https://www.youtube.com/@headlockcc" target="_blank" style="color: var(--accent); text-decoration: none;">Youtube</a>
+  </div>
+
+  <div style="margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center;">
+    © 2025 headlock.cc — All rights reserved.
+  </div>
+</footer>
+
+
+
+  <script>
+    document.getElementById("notifyBtn").addEventListener("click", () => {
+      document.querySelector("#discord").scrollIntoView({ behavior: "smooth" });
+    });
+
+  function smoothScroll(target, duration = 800) {
+    const element = document.querySelector(target);
+    const startPosition = window.pageYOffset;
+    const targetPosition = element.getBoundingClientRect().top;
+    const startTime = performance.now();
+
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    function animateScroll(currentTime) {
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, targetPosition, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animateScroll);
+    }
+
+    requestAnimationFrame(animateScroll);
+  }
+
+  document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      smoothScroll(href, 1000); 
+    });
+  });
+
+  document.getElementById("notifyBtn").addEventListener("click", () => {
+    smoothScroll("#discord", 1000);
+  });
+  const heroGif = document.querySelector('.hero img');
+
+  heroGif.addEventListener('contextmenu', e => e.preventDefault());
+
+  heroGif.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
+</body>
+</html>
