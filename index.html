@@ -29,9 +29,7 @@
       padding-top: 80px; 
     }
 
-    h1, h2, h3 {
-      font-family: 'Cinzel', serif;
-    }
+    h1, h2, h3 { font-family: 'Cinzel', serif; }
 
     .navbar {
       position: fixed;
@@ -94,11 +92,12 @@
       text-align: center;
       max-width: 800px;
       margin: 40px auto 60px auto;
+      padding: 0 20px;
     }
 
     .hero img {
       width: 500px;
-      max-width: 800px;
+      max-width: 100%;
       height: auto;
       border-radius: 16px;
       object-fit: contain;
@@ -135,6 +134,7 @@
       text-align: center;
       max-width: 1000px;
       margin: 60px auto;
+      padding: 0 20px;
     }
 
     .showcase h2 {
@@ -170,6 +170,7 @@
       text-align: center;
       margin: 100px auto 60px;
       max-width: 1100px;
+      padding: 0 20px;
     }
 
     .features-title {
@@ -204,11 +205,7 @@
       background: linear-gradient(180deg, rgba(0, 255, 136, 0.08), rgba(0, 255, 136, 0.03));
     }
 
-    .feature-card h3 {
-      color: var(--accent);
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
+    .feature-card h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 10px; }
 
     .feature-card p, .feature-card li {
       color: var(--muted);
@@ -221,10 +218,7 @@
       padding-left: 0;
     }
 
-    .feature-card ul li::before {
-      content: "• ";
-      color: var(--accent);
-    }
+    .feature-card ul li::before { content: "• "; color: var(--accent); }
 
     .discord-section {
       text-align: center;
@@ -237,15 +231,8 @@
       box-shadow: 0 0 40px rgba(0, 255, 136, 0.04);
     }
 
-    .discord-section h3 {
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .discord-section p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
+    .discord-section h3 { color: var(--accent); margin-bottom: 12px; }
+    .discord-section p { color: var(--muted); margin-bottom: 20px; }
 
     .discord-btn {
       background: linear-gradient(90deg, var(--accent2), var(--accent));
@@ -274,9 +261,53 @@
       text-align: center;
     }
 
+    footer div {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    footer div a { color: var(--accent); text-decoration: none; }
+
+    footer div:last-child {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 12px 20px;
+        gap: 12px;
+      }
+
+      .navbar ul { flex-direction: column; gap: 12px; width: 100%; }
+      .navbar ul li a { text-align: center; }
+      .navbar .buy-btn { width: 100%; text-align: center; padding: 12px 0; }
+
+      .hero img { width: 100%; max-width: 100%; height: auto; }
+      .hero p { font-size: 14px; padding: 0 10px; }
+      .hero .btn { width: 90%; padding: 12px 0; font-size: 15px; }
+
+      .showcase-media { grid-template-columns: 1fr; gap: 15px; padding: 0 10px; }
+      .features-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
+
+      .discord-section { padding: 20px 15px; margin: 60px 10px; }
+      .discord-btn { width: 100%; padding: 12px 0; }
+
+      footer div { flex-direction: column; gap: 8px; text-align: center; }
+    }
   </style>
 </head>
-
 <body>
   <nav class="navbar">
     <div class="logo">headlock.cc</div>
@@ -284,6 +315,7 @@
       <li><a href="#showcase">Showcase</a></li>
       <li><a href="#discord">Discord</a></li>
     </ul>
+    <a href="#discord" class="buy-btn">EARLY ACCESS</a>
   </nav>
 
   <section class="hero">
@@ -323,69 +355,60 @@
     <a href="https://discord.gg/zJ7syhyECC" target="_blank" class="discord-btn">Join Discord</a>
   </section>
 
-<footer>
-  <div style="max-width: 1000px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 14px; color: var(--accent); text-align: center;">
-        <div style="color: var(--text); font-size: 14px; margin-bottom: 10px;">
-      Got questions? Reach out to us!
+  <footer>
+    <div>
+      <div style="color: var(--text); font-size: 14px; margin-bottom: 10px;">Got questions? Reach out to us!</div>
+      <a href="mailto:headlockcc@proton.me">Email</a> | 
+      <a href="https://discord.gg/zJ7syhyECC" target="_blank">Discord</a> | 
+      <a href="https://www.youtube.com/@headlockcc" target="_blank">Youtube</a>
     </div>
-<a href="mailto:headlockcc@proton.me" style="color: var(--accent); text-decoration: none;">Email</a> | 
-<a href="https://discord.gg/zJ7syhyECC" target="_blank" style="color: var(--accent); text-decoration: none;">Discord</a> | 
-<a href="https://www.youtube.com/@headlockcc" target="_blank" style="color: var(--accent); text-decoration: none;">Youtube</a>
-  </div>
-
-  <div style="margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center;">
-    © 2025 headlock.cc — All rights reserved.
-  </div>
-</footer>
-
-
+    <div>© 2025 headlock.cc — All rights reserved.</div>
+  </footer>
 
   <script>
     document.getElementById("notifyBtn").addEventListener("click", () => {
       document.querySelector("#discord").scrollIntoView({ behavior: "smooth" });
     });
 
-  function smoothScroll(target, duration = 800) {
-    const element = document.querySelector(target);
-    const startPosition = window.pageYOffset;
-    const targetPosition = element.getBoundingClientRect().top;
-    const startTime = performance.now();
+    function smoothScroll(target, duration = 800) {
+      const element = document.querySelector(target);
+      const startPosition = window.pageYOffset;
+      const targetPosition = element.getBoundingClientRect().top;
+      const startTime = performance.now();
 
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
+      function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+      }
+
+      function animateScroll(currentTime) {
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, targetPosition, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animateScroll);
+      }
+
+      requestAnimationFrame(animateScroll);
     }
 
-    function animateScroll(currentTime) {
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, targetPosition, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animateScroll);
-    }
-
-    requestAnimationFrame(animateScroll);
-  }
-
-  document.querySelectorAll('.navbar a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const href = link.getAttribute('href');
-      smoothScroll(href, 1000); 
+    document.querySelectorAll('.navbar a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        smoothScroll(href, 1000); 
+      });
     });
-  });
 
-  document.getElementById("notifyBtn").addEventListener("click", () => {
-    smoothScroll("#discord", 1000);
-  });
-  const heroGif = document.querySelector('.hero img');
+    document.getElementById("notifyBtn").addEventListener("click", () => {
+      smoothScroll("#discord", 1000);
+    });
 
-  heroGif.addEventListener('contextmenu', e => e.preventDefault());
-
-  heroGif.addEventListener('dragstart', e => e.preventDefault());
-  document.addEventListener('contextmenu', e => e.preventDefault());
+    const heroGif = document.querySelector('.hero img');
+    heroGif.addEventListener('contextmenu', e => e.preventDefault());
+    heroGif.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
   </script>
 </body>
 </html>
-
