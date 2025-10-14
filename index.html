@@ -283,40 +283,36 @@
       text-align: center;
     }
 
-    @media (max-width: 768px) {
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
+    flex-direction: row; /* Logo, menü ve buton yan yana */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    gap: 10px;
+    padding: 8px 15px; /* Daha küçük padding */
     border-bottom: 1px solid rgba(0,255,136,0.1);
   }
 
   .navbar .logo {
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1rem; /* Daha küçük logo */
   }
 
   .navbar ul {
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    align-items: center;
+    flex-direction: row; /* Menü öğeleri yan yana */
+    gap: 12px;           /* Aralarındaki boşluk küçüldü */
   }
 
   .navbar ul li a {
-    font-size: 14px;
+    font-size: 13px;     /* Menü linklerini küçülttük */
   }
 
   .navbar .buy-btn {
-    width: 90%;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    margin-top: 5px;
+    padding: 6px 12px;   /* Butonu küçülttük */
+    font-size: 13px;     /* Buton yazısı küçüldü */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,255,136,0.1);
   }
 }
+
 
 
       .hero img { width: 100%; max-width: 100%; height: auto; }
@@ -437,4 +433,5 @@
   </script>
 </body>
 </html>
+
 
