@@ -306,6 +306,97 @@
 
       footer div { flex-direction: column; gap: 8px; text-align: center; }
     }
+
+    .pricing-section {
+  text-align: center;
+  margin: 100px auto 60px;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.pricing-card {
+  background: var(--panel);
+  border: 1px solid rgba(0,255,136,0.15);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  box-shadow: 0 0 25px rgba(0,255,136,0.05);
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 0 35px rgba(0,255,136,0.15);
+}
+
+.pricing-card h3 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-family: 'Cinzel', serif;
+}
+
+.pricing-card ul {
+  list-style: none;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  padding: 0;
+}
+
+.pricing-card ul li::before {
+  content: "• ";
+  color: var(--accent);
+}
+
+.pricing-card .price {
+  background: rgba(0,255,136,0.1);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding: 10px 0;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
+
+.pricing-card .price span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.pricing-card .buy-btn {
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border: none;
+  color: #001c0f;
+  font-weight: 700;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,255,136,0.15);
+}
+
+.pricing-card .buy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 30px rgba(0,255,136,0.25);
+}
+
+@media (max-width: 768px) {
+  .pricing-card .price {
+    font-size: 1.4rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -313,16 +404,18 @@
     <div class="logo">headlock.cc</div>
     <ul>
       <li><a href="#showcase">Showcase</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#discord">Discord</a></li>
+
     </ul>
-    <a href="#discord" class="buy-btn">EARLY ACCESS</a>
+    <a href="#discord" class="buy-btn">PURCHASE</a>
   </nav>
 
   <section class="hero">
     <img src="/headlock.gif" alt="headlock animation" />
     <p>External, safe, and precise — the ultimate cheat experience<br>
     Built for power, control, and undetectable performance.</p>
-    <button class="btn" id="notifyBtn">EARLY ACCESS</button>
+    <button class="btn" id="notifyBtn">PURCHASE</button>
   </section>
 
   <section id="showcase" class="showcase">
@@ -334,9 +427,9 @@
       </video>
       <img src="/showcase1.png" alt="Analytics Snapshot">
     </div>
-  </section>
 
-  <section class="features-section">
+  </section>
+    <section class="features-section">
     <h2 class="features-title">FEATURES</h2>
     <div class="features-grid">
       <div class="feature-card"><h3>🎯 aimbot</h3><p>High-precision aim assist for perfect accuracy.</p></div>
@@ -348,6 +441,44 @@
       <div class="feature-card"><h3>🔒 security</h3><p>100% VAC Safe.</p></div>
     </div>
   </section>
+
+<section class="pricing-section" id="pricing">
+  <h2 class="features-title">PRICING</h2>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <h3>1 DAY</h3>
+      <ul>
+        <li>100% VAC Ban Protection</li>
+        <li>Automatic Updates</li>
+        <li>24/7 Support</li>
+      </ul>
+      <div class="price">1 $</div>
+      <button class="buy-btn">ACTIVATE 1 DAY</button>
+    </div>
+
+    <div class="pricing-card">
+      <h3>15 DAYS</h3>
+      <ul>
+        <li>100% VAC Ban Protection</li>
+        <li>Automatic Updates</li>
+        <li>24/7 Support</li>
+      </ul>
+      <div class="price">3 $</div>
+      <button class="buy-btn">ACTIVATE 15 DAYS</button>
+    </div>
+
+    <div class="pricing-card">
+      <h3>30 DAYS</h3>
+      <ul>
+        <li>100% VAC Ban Protection</li>
+        <li>Automatic Updates</li>
+        <li>24/7 Support</li>
+      </ul>
+      <div class="price">5 $</div>
+      <button class="buy-btn">ACTIVATE 30 DAYS</button>
+    </div>
+  </div>
+</section>
 
   <section class="discord-section" id="discord">
     <h3>join the community</h3>
@@ -409,6 +540,13 @@
     heroGif.addEventListener('contextmenu', e => e.preventDefault());
     heroGif.addEventListener('dragstart', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.querySelectorAll('.pricing-card .buy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.open('https://discord.gg/zJ7syhyECC', '_blank');
+  });
+});
+
   </script>
 </body>
 </html>
